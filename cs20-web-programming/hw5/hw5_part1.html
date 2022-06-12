@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lucky for Life</title>
+	<style type="text/css">
+		html,body,input {font-size:30px; font-family: 'Times New Roman', Times, serif;}	
+	</style>
+	<script language="javascript">
+
+
+		const NUMBER = 5;
+		var rand_lucky_ball;
+		var rand_num_arr = [];
+
+	////////////////////////////////////////////////////////////////////////////
+	//
+	//
+	//				Function Declaration
+	//	
+	//
+	////////////////////////////////////////////////////////////////////////////
+
+
+	//------------------------------------------------------------------------//
+
+	function getRandomIntInclusive(min, max) {
+  		min = Math.ceil(min);
+  		max = Math.floor(max);
+  		return Math.floor(Math.random() * (max - min + 1)) + min;  
+	}
+
+	function repeats(index, value){
+		for (i = 0; i < index; i++){
+			if (rand_num_arr[i] == value){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	//------------------------------------------------------------------------//
+
+
+	// get ramdom lucky ball num
+	rand_lucky_ball = getRandomIntInclusive(1,18);
+
+	// get random 5 numbers without repetitions
+	for (i = 0; i < NUMBER; i++){
+		temp = getRandomIntInclusive(1, 48); 
+		// check for repetition   
+		while (repeats(i, temp)){
+			temp = getRandomIntInclusive(1, 48);
+		} 
+        rand_num_arr[i] = temp;
+	}
+
+	//------------------------------------------------------------------------//
+		// ONCLICK EVENT 
+		function compare_guess()
+		{
+			
+		/************************** get user data ****************************/
+		
+			guess_str = document.form1.guess_str.value;
+			guess_arr = guess_str.split(" ");
+			guess_lucky_ball = document.form1.guess_lucky_ball.value;
+			
+		/****************  compare guess with random data *******************/
+			var match_num = 0;
+
+
+			// checking match num
+			var matching_elem = [];
+			for (j = 0; j < NUMBER; j++){
+				matching_elem[j] = 0;
+			}
+
+    		for (var i = 0; i < guess_arr.length; i++){
+				for (j = 0; j < rand_num_arr.length; j++){
+					if ( matching_elem[j] == 0 && guess_arr[i] == rand_num_arr[j]){
+						match_num += 1;
+						matching_elem[j] = 1;
+					}
+				}
+			}
+
+		/*************************  determine payout  ************************/
+			switch(match_num + ((guess_lucky_ball == rand_lucky_ball) ? 6 : 0)) {
+											    // lucky ball has a value of 6
+  				case 0: // nothing
+			  		prize = "$0";
+    				break;
+  				case 1: // nothing
+			  		prize = "$0";
+    				break;
+				case 2: // 2 matching nums
+					prize = "$3";
+    				break;
+				case 3: // 3 matching nums
+					prize = "$20";
+    				break;
+				case 4: // 4 matching nums
+					prize = "$200";
+    				break;
+				case 5: // 5 matching nums
+					prize = "$25,000 a YEAR for LIFE!";
+    				break;
+				case 6: // 0 matching num + Lucky Ball
+					prize = "$4";
+    				break;
+				case 7: // 1 matching num + Lucky Ball
+					prize = "$6";
+    				break;
+				case 8: // 2 matching nums + Lucky Ball
+					prize = "$25";
+    				break;
+				case 9: // 3 matching nums + Lucky Ball
+					prize = "$150";
+    				break;
+				case 10: // 4 matching nums + Lucky Ball
+					prize = "$5,000";
+    				break;
+				case 11: // 5 matching nums + Lucky Ball
+					prize = "$7,000 a WEEK for LIFE!";
+    				break;
+				default:
+					prize = "$0";
+			}
+			document.getElementById("prize").innerHTML = "Payout: " + prize + "<br>";
+	}
+	//------------------------------------------------------------------------//
+
+	</script>
+</head>
+
+<body> 
+	<h1> Lucky For Life</h1>
+		<h5> Random Numbers(unsorted): 
+			<script language="javascript">
+				for (i = 0; i < rand_num_arr.length; i++){
+					document.write(rand_num_arr[i] + " ");
+				}
+			</script>
+		</h5> 
+		<h5> Random Numbers(sorted): 
+			<script language="javascript">
+				rand_num_arr.sort(function(a, b){return a-b});
+				for (i = 0; i < rand_num_arr.length; i++){
+					document.write(rand_num_arr[i] + " ");
+				}
+			</script>
+		</h5> 
+		<h5> Lucky Ball: 
+			<script language="javascript"> 
+				document.write(rand_lucky_ball); 
+			</script>
+		</h5> 
+
+	<form name="form1">
+		Enter your Guess for the 5 numbers, separate by space &nbsp;&nbsp;
+		<script language="javascript">
+		document.write ('<input type="text" name="guess_str" id="five_num">');
+		</script>	
+			<br />
+		Enter your guess for Lucky Ball &nbsp;&nbsp;
+		<script language="javascript">
+		document.write ('<input type="text" name="guess_lucky_ball" id="lucky_ball">');
+		</script>	
+
+		<br /><br />
+		<input type="button" value = "Pay $2 and Test Your Luck" 
+			   onclick ="compare_guess()">
+	</form>
+
+	<div id = "prize"> &nbsp;</div>
+
+
+</body>
+
+
+</html>
