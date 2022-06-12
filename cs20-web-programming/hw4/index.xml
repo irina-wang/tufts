@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="hw4.css"?>   
+
+<PLAY_LIST>   
+    <NAME>Top 10 Chinese Songs</NAME>
+    <_1><CD> 
+       <TITLE>Won't Cry</TITLE> 
+       <ARTIST>Jay Chou</ARTIST> 
+       <COUNTRY>Taiwan</COUNTRY> 
+       <GENRE>Ballad</GENRE> 
+       <LONGTH>03:51</LONGTH> 
+       <YEAR>2019</YEAR> 
+                            </CD></_1> 
+
+    <_2><CD> 
+       <TITLE>When We Were Young</TITLE> 
+       <ARTIST>Eric Chou</ARTIST> 
+       <COUNTRY>Taiwan</COUNTRY> 
+       <GENRE>Soul Ballad</GENRE> 
+       <LONGTH>03:31</LONGTH> 
+       <YEAR>2020</YEAR> 
+                            </CD></_2> 
+
+    <_3><CD> 
+       <TITLE>Your Love Song</TITLE> 
+       <ARTIST>TANK</ARTIST> 
+       <COUNTRY>Taiwan</COUNTRY> 
+       <GENRE>Acoustic Rock</GENRE> 
+       <LONGTH>04:48</LONGTH> 
+       <YEAR>2020</YEAR> 
+                            </CD></_3>
+
+    <_4><CD> 
+       <TITLE>Without You</TITLE> 
+       <ARTIST>OSN</ARTIST> 
+       <COUNTRY>Taiwan</COUNTRY> 
+       <GENRE>RnB</GENRE> 
+       <LONGTH>03:04</LONGTH> 
+       <YEAR>2020</YEAR> 
+                            </CD></_4>
+
+    <_5><CD> 
+       <TITLE>If I Were Young</TITLE> 
+       <ARTIST>Ronghao Li</ARTIST> 
+       <COUNTRY>China</COUNTRY> 
+       <GENRE>Pop</GENRE> 
+       <LONGTH>04:58</LONGTH> 
+       <YEAR>2018</YEAR> 
+                            </CD></_5> 
+
+    <_6><CD> 
+       <TITLE>Full Stop</TITLE> 
+       <ARTIST>G.E.M</ARTIST> 
+       <COUNTRY>Hong Kong</COUNTRY> 
+       <GENRE>Hip-hop</GENRE> 
+       <LONGTH>04:03</LONGTH> 
+       <YEAR>2019</YEAR> 
+                            </CD></_6> 
+
+    <_7><CD> 
+       <TITLE>The Hidden Memories</TITLE> 
+       <ARTIST>A Shin</ARTIST> 
+       <COUNTRY>Taiwan</COUNTRY> 
+       <GENRE>Rock</GENRE> 
+       <LONGTH>05:00</LONGTH> 
+       <YEAR>2019</YEAR> 
+                            </CD></_7>
+
+    <_8><CD> 
+       <TITLE>How Am I</TITLE> 
+       <ARTIST>Fish Leong</ARTIST> 
+       <COUNTRY>Malaysia</COUNTRY> 
+       <GENRE>Pop</GENRE> 
+       <LONGTH>06:20</LONGTH> 
+       <YEAR>2019</YEAR> 
+                            </CD></_8>
+    
+    <_9><CD> 
+       <TITLE>Take Everything You Want</TITLE> 
+       <ARTIST>Tiger Hu</ARTIST> 
+       <COUNTRY>China</COUNTRY> 
+       <GENRE>Pop</GENRE> 
+       <LONGTH>05:02</LONGTH> 
+       <YEAR>2019</YEAR> 
+                            </CD></_9>
+    
+    <_10><CD> 
+       <TITLE>Ugly Beauty</TITLE> 
+       <ARTIST>Jolin Tsai</ARTIST> 
+       <COUNTRY>Taiwan</COUNTRY> 
+       <GENRE>Pop</GENRE> 
+       <LONGTH>04:56</LONGTH> 
+       <YEAR>2018</YEAR> 
+                            </CD></_10>
+    
+</PLAY_LIST>

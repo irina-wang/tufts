@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+PLAY_LIST{
+    display: block;
+    background-color: #fff8d0;
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    align-content: stretch;
+}
+NAME{
+    font-family: fantasy;
+    display: block;
+    text-align: center;
+    font-size: 40pt;
+    padding: 10pt;
+    background-color: wheat;
+}
+CD{
+    padding:30px;
+    display: block;
+    position: relative;
+    border: 30px;
+    margin: 30px;
+    background-color: cornsilk;
+}
+_1, _2, _3, _4, _5, _6, _7, _8, _9, _10{
+    display: inline-flex;
+    background-color: rgb(153, 157, 184);
+    margin: 30px;
+    border: 30px;
+}
+TITLE{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: block;
+    color: #2e2727;
+    font-size: 10pt;
+}
+ARTIST {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: block;
+    color: #4c4c61;
+    font-size: 10pt;
+}
+COUNTRY, GENRE, LONGTH, YEAR{
+    display: block;
+    color: #000000;
+    font-size: 8pt;
+}
