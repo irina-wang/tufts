@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>SONGS LIST</title>
+        <h1>SONGS LIST</h1>
+    </head>
+
+    <body>
+        <!------------------------------ Layout ------------------------------->
+        <div>
+            <h2>Serialized Display</h2>
+            <p id="serialize_display">&nbsp;</p>
+        </div>
+
+        <div>
+            <h2>User Friendly Display</h2>
+            <p id="user_friendly_display"></div>
+        </div>
+
+        <div>
+            <h2>Filter by Genre</h2>
+            <form id="filter_form">
+                <label for="genre">Choose a genre:</label>
+                    <select id='select' name='genre_list'>
+                            <option value="Acoustic Rock">Acoustic Rock</option>
+                            <option value="Ballad">Ballad</option>
+                            <option value="Hip-hop">Hip-hop</option>
+                            <option value="Pop">Pop</option>
+                            <option value="RnB">RnB</option>
+                            <option value="Rock">Rock</option>
+                            <option value="Soul Ballad">Soul Ballad</option>
+                    </select>
+                <input type="button" value="Filter" onclick="filter()"></input>
+            </form>
+            <p id ="filtered_info" placeholder="hi"></p>
+        </div>
+
+        <!------------------------------ Javascript --------------------------->
+	    <script language="javascript">
+          var play_list;
+             play_list = [
+	        { // 0
+                "artist": "Jay Chou",
+	            "title": "Won't Cry",
+	            "genre": "Ballad",
+	            "year": 2019,
+	        },
+            { // 1
+                "artist": "Eric Chou",
+	            "title": "When We Were Young",
+	            "genre": "Soul Ballad",
+	            "year": 2020,
+            },
+            { // 2
+                "artist": "TANK",
+	            "title": "Your Love Song",
+	            "genre": "Acoustic Rock",
+	            "year": 2020,
+            },
+            { // 3
+                "artist": "OSN",
+	            "title": "Without You",
+	            "genre": "RnB",
+	            "year": 2020,
+            },
+            { // 4
+                "artist": "Ronghao Li",
+	            "title": "If I Were Young",
+	            "genre": "Pop",
+	            "year": 2018,
+            },
+            { // 5
+                "artist": "G.E.M",
+	            "title": "Full Stop",
+	            "genre": "Hip-hop",
+	            "year": 2019,
+            },
+            { // 6
+                "artist": "A Shin",
+	            "title": "The Hidden Memories",
+	            "genre": "Rock",
+	            "year": 2019,
+            },
+            { // 7
+                "artist": "Fish Leong",
+	            "title": "How Am I",
+	            "genre": "Pop",
+	            "year": 2019,
+            },
+            { // 8
+                "artist": "Tiger Hu",
+	            "title": "Take Everything You Want",
+	            "genre": "Pop",
+	            "year": 2019,
+            },
+            { // 9
+                "artist": "Jolin Tsai",
+	            "title": "Ugly Beauty",
+	            "genre": "Pop",
+	            "year": 2018,
+	        }
+	    ];  
+    
+    // serialized display
+        p_l = JSON.stringify(play_list);
+        document.getElementById("serialize_display").innerHTML = p_l;
+
+    // user friendly display
+        JSONpl = JSON.parse(p_l);
+        var total = Object.keys(JSONpl).length;
+        function UF_display(obj){
+            for (var i = 0; i <= total; i++){
+                document.getElementById("user_friendly_display").innerHTML += "<b>" + obj[i].title + "</b>" + "</br>";
+                document.getElementById("user_friendly_display").innerHTML += " Artist: " + obj[i].artist + "</br>";
+                document.getElementById("user_friendly_display").innerHTML += " Genre: " + obj[i].genre + "</br>";
+                document.getElementById("user_friendly_display").innerHTML += " Released in " + obj[i].year + "</br>";
+                document.getElementById("user_friendly_display").innerHTML += "</br>"; 
+            }
+            alert("Hi");
+            document.getElementById("user_friendly_display").innerHTML = list; 
+        }
+        UF_display(JSONpl);
+
+    // filter data
+        function filter(){
+            var s ="";
+            genre = document.getElementById("select").value;
+            for (var i = 0; i < total; i++){
+                if(JSONpl[i].genre == genre){
+                        s += "<b>" + JSONpl[i].title + "</b>" + "</br>";
+                        s += " Artist: " + JSONpl[i].artist + "</br>";
+                        s += " Genre: " + JSONpl[i].genre + "</br>";
+                        s += " Released in " + JSONpl[i].year + "</br>";
+                        s += "</br>";
+                }
+            }
+            document.getElementById("filtered_info").innerHTML = s;
+        }      
+        </script>
+    </body>
+</html>
