@@ -1,0 +1,13 @@
+'''
+COLLABORATORS.txt
+Author: Irina Mengqi Wang
+
+Tufts COMP 135 Intro ML
+
+'''
+
+• I use ~5hrs to learn the libraries and complete question 1 to 4
+• I went to Xi and Ruoyuan's OH, and did some research about overfitting data, 
+and the limit of sklearn library. 
+• I went to OH and asked about ask about allowed library and list vs array. 
+

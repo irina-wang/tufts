@@ -1,0 +1,13 @@
+'''
+COLLABORATORS.txt
+Author: Irina Mengqi Wang
+
+Tufts COMP 135 Intro ML
+
+'''
+
+• I use ~5hrs to learn the libraries and complete question 1 to 6
+• I went to Yuexing's OH to ask about always-0 classfiers. 
+• I went to OH and asked about supressing template code error, and test data vs.
+validation data. 
+

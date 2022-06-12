@@ -1,0 +1,11 @@
+'''
+COLLABORATORS.txt
+Author: Irina Mengqi Wang
+
+Tufts COMP 135 Intro ML
+
+'''
+
+• I use 3hrs to learn python and complete this
+• I consult the tips TA Sheng posted on Piazza. 
+• I completed all of these. 

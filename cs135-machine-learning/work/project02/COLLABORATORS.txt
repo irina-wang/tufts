@@ -1,0 +1,25 @@
+
+'''
+COLLABORATORS.txt
+Author: Irina Mengqi Wang
+
+Tufts COMP 135 Intro ML
+
+'''
+
+• I spent 30 hrs to complete the project, most of the time are used to train the moodels.
+• I went to Brian, Khan, and Frederick's OH to ask about 
+    1. how to install nltk 
+    2. what word embedding refers to
+    3. how to measure uncertainty
+    4. clarification about the hidden units 
+
+• reference used(also mentioned in the report): 
+    autocorrect: https://github.com/fsondej/autocorrect
+    common words: https://gist.github.com/sebleier/554280
+    positive sentiments: https://github.com/shekhargulati/sentiment-analysis-python/blob/master/opinion-lexicon-English/positive-words.txt
+    contract expansion: https://stackoverflow.com/questions/19790188/expanding-english-language-contractions-in-python
+
+
+    Thank you so much for grading! And thanks for the great semester!
+                                                                    :) 

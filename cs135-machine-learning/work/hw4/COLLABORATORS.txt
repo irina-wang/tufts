@@ -1,0 +1,15 @@
+'''
+COLLABORATORS.txt
+Author: Irina Mengqi Wang
+
+Tufts COMP 135 Intro ML
+
+'''
+
+• I use ~5hrs to learn the libraries and complete question 1 to 6
+• I went read the piazza posts to note common mistakes. 
+• I went to discuss with Zhicheng about the difference between batch and 
+stochastic, and why using stochastic is leading to the result in question
+3 and 4. 
+
+

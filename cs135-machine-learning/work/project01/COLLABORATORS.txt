@@ -1,0 +1,11 @@
+'''
+COLLABORATORS.txt
+Author: Irina Mengqi Wang
+
+Tufts COMP 135 Intro ML
+
+'''
+
+• I use ~10hrs to try different models and complete part 1 to 3
+• I went to Sheng's OH and got clarifying answers about the report. 
+
