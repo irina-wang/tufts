@@ -1,0 +1,133 @@
+Dreamy McDreamy
+N
+N
+30
+100.5
+
+Hawkeye Pierce
+N
+N
+15
+102.0
+
+Corporal Klinger
+C
+N
+15
+102.0
+
+Margaret Houlihan
+C
+H
+45
+90.3
+
+Radar O'Reilly
+C
+N
+75
+98.6
+
+Jackie Peyton
+C
+N
+86
+98.6
+
+Eleanor O'Hara
+C
+N
+55
+101.2
+
+Carrie Roman
+C
+H
+65
+98.6
+
+Kevin Peyon
+N
+N
+45
+99.9
+
+Fitch Cooper
+C
+H
+30
+101.2
+
+Zoey Barkow
+C
+N
+20
+105.4
+
+Gloria Akalitus
+N
+H
+80
+101.0
+
+Eddie Walzer
+N
+N
+78
+98.9
+
+Ike Prentiss
+C
+H
+43
+98.6
+
+Frank Verelli
+C
+H
+65
+98.6
+
+Thor Lundgren
+N
+N
+78
+102.2
+
+Mohammed Cruz
+C
+N
+43
+101.3
+
+Sherman Potter
+C
+N
+66
+103.5
+
+Henry Blake
+C
+N
+75
+99.1
+
+Father Mulcahy
+C
+N
+120
+99.9
+
+Frank Burns
+C
+N
+130
+98.6
+
+Charles Winchester
+N
+N
+135
+98.9
+
+-1

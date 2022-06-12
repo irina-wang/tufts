@@ -1,0 +1,14 @@
+i TACAGGT
+q TAGTAGT
+i TAGTAGT
+q ACCATAC
+i TAC
+q ACGT
+f newfile.txt
+n
+r TAG
+r TAC
+n
+p
+d
+pq ACC

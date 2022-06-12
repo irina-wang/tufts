@@ -1,0 +1,16 @@
+            Halligan    Stairs    SEC    Barnum    Ballou    Tisch    Paige    Cousens    Dewick    Hodgdon    Davies    Wyeth Dowling Jumbo    Cannon
+Halligan    0            1        1        0       0         0        0        1          0         0           0        0     1        0        0
+Stairs      1            0        1        1       0         1        0        0          0         0           0        0     0        0        0
+SEC         1            1        0        0       0         0        0        0          0         0           0        0     0        0        0
+Barnum      0            1        0        0       1         0        0        0          1         0           0        0     0        1        1
+Ballou      0            0        0        1       0         1        0        0          0         0           0        0     0        1        0
+Tisch       0            1        0        0       1         0        1        0          1         0           0        0     0        0        1
+Paige       0            0        0        0       0         1        0        0          0         0           0        0     0        0        0
+Cousens     1            0        0        0       0         0        0        0          0         0           0        0     0        0        0
+Dewick      0            0        0        1       0         1        0        0          0         1           0        0     0        0        0
+Hodgdon     0            0        0        0       0         0        0        0          1         0           1        1     0        0        0
+Davies      0            0        0        0       0         0        0        0          0         1           0        0     0        0        0
+Wyeth       0            0        0        0       0         0        0        0          0         1           0        0     0        0        0
+Dowling     1            0        0        0       0         0        0        0          0         0           0        0     0        0        0
+Jumbo       0            0        0        1       1         0        0        0          0         0           0        0     0        0        0
+Cannon      0            0        0        1       0         1        0        0          0         0           0        0     0        0        0

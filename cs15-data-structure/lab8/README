@@ -1,0 +1,94 @@
+/*********************************************************
+ * Lab 10: heaps
+ * Comp 15 Fall 2018 
+ * 
+ * Author: Hayden Wolff
+ *
+ *********************************************************/
+
+Compile/run: Compile using "make er", run executable with 
+"./er"
+
+Program Purpose: This lab assignment contains an 
+implementation of a base class, heap, which is the parent
+class of the MinHeap and MaxHeap classes. It is used to
+calculate a patient's priority in an ER.
+
+Acknowledgements: This lab is slightly modified from Laney Strange's 
+Spring 2018 Heaps lab and homework. Matias Korman assisted in giving 
+guidelines for the documentation of this code. 
+(also list if you consulted stackoverflow, other websites, etc and drop 
+in a link in your readme).
+
+
+Files:
+
+
+er.cpp            : Main driver of the heap lab, creates 
+                  a priority queue of patients and a
+                  MinHeap, reads in patients and uses a
+                  heap to get the ones with priorities
+                  in order.
+
+Heap.cpp          : Implementation of templated abstract
+                  heap class, allows for insertion and
+                  extraction from heap.
+
+
+Heap.h            : Interface of templated heap abstract
+                  class.
+
+Queue.cpp         : Simple template priority queue class
+                  used to store patients before
+                  inserting them into a heap.
+
+Queue.h           : Interface of Queue class.
+
+Patient.cpp       : Patient class that gives a patient a
+                  priority based on a variety of
+                  symptoms.
+
+Patient.h         : Interface of Patient class.
+
+MaxHeap.cpp       : Implementation of a templated
+                    MaxHeap class, inherits from the
+                    abstract Heap class.
+
+MaxHeap.h         : Interface of MaxHeap class.
+
+MinHeap.cpp       : Implementation of a templated
+                    MinHeap, inherits from the
+                    abstract Heap class.
+
+MaxHeap.h         : Interface of MaxHeap class.
+
+test_input.txt    : File of patients with symptoms to test
+                  this program.
+
+README            : this file
+
+
+Data Structures: This assignment uses a priority queue and 
+a MinHeap. These are both efficient data structures to use
+because patients are desired in order of priorities. 
+To insert into a queue the runtime is O(1) and same with
+extracting from a queue (O)1 because we only care about 
+enqueueing onto the back and dequeing from the front.
+Inserting into a heap is O(lgn). Removing from a heap is 
+also O(lgn) because of heapifying up/down. 
+
+Testing: Here describe the following: process of testing 
+(unit tests), mention of bugs you encountered while testing,
+mention of testing on inputs of different sizes and edge
+cases, good description of base cases you considered while
+testing. Demonstrate a methodical approach to testing here.
+
+Note: the code is not complete on purpose. Students must
+write the calculate_priority in the patient class which is
+up to your creative decisions, but try to design it so
+patients in need don't die! Students must also declare an
+enum for the 5 priorities named "Priority" in the patient
+class. Remaining code must be written in a driver.
+Use the queue and MinHeap classes to: 1) Announce the
+highest priority patient and 2) Print all the ramining
+patients in order. 

@@ -1,0 +1,95 @@
+/**********************************************************
+* HW4: BinarySearchTree
+* Comp 15 Spring 2019 
+* README
+* 
+* Author: Irina Mengqi Wang
+* Date:   2019/2/27
+*
+* Note: Partial descriptions copied from hw4 pdf file
+*********************************************************/
+
+Compile/run: Compile using "make", run executable with
+"./hw4"
+
+Program Purpose: This homework is a binary search tree implementation. 
+A binary search tree has the invariant that all nodes to the left of a 
+node are smaller in value, and all nodes to the right are larger in value.
+This homework assignment handles a binary search tree implementation that 
+allows us to insert and remove/delete nodes to construct a tree. We can also
+access properties(max, min, height...) of the tree. Learn how to design and 
+modularize code for a Binary Tree, emphasizing the idea of BIG THREE.
+
+Acknowledgements: 
+- I searched online for how to combine two Makefiles into one
+- I searched studied the binary node explanations on cmu website, geeksforgeeks
+and stackoverflow(which are the first three websites that popped out)
+- I checked the answers on Piazza(Thanks for the TAs!)
+- I used vsCode to debug my code
+
+Files: 
+main.cpp: GIVEN : simple driver that checked few remove cases and print with 
+print function
+
+BinarySearchTree.cpp: STUDENT TO-DO: Implementation of BinarySearchTree class.
+Main functionality of implementing with inserting and removing nodes, should be
+able to access properties of the tree as well. 
+
+BinarySearchTree.h: GIVEN: Interface of BinarySearchTree class.
+
+Pretty_print.cpp: GIVEN: Pretty Printing for a Node. Allows us to print tree 
+prettily. 
+
+
+Data Structures:
+
+I used a implementation of binary tree, leading with the node root pointing to
+its children. In this structure, each node contains its own count and data, 
+recording the times it has been inserted and the value it contains. Each node 
+has two children, with the left one smaller than its value and the right one 
+larger than its value. We traverse through the tree pre_orderly to insert and
+post_orderly to delete. We use recursion to solve most functions. I put most 
+implementational functions in private, so that the clients are not able to 
+access and modify directly. These functions include finding the max/min value
+of a tree, see if the value is in the tree, remove and insert value, count total
+nodes, count total number, find the height of a node and so on. 
+
+
+Testing: 
+
+NORMAL_TESTING
+Before doing the unit test, I compiled and ran the program. I use diff to check 
+my output with the reference output to make sure there's no difference. 
+
+I had a segment fault at first and I soon discovered my problem in insert -- 
+I didn't insert the node into the tree. I modified that and found the problem 
+with my remove function, which failed to delete the replacement(right_min) node.
+I modified my functions to make it work.  
+
+UNIT_TESTING
+I used google test to check all the public functions's normal functionality as
+well as the special cases 
+         - find_min : noting the root is empty or min
+         - find_max : noting the root is empty or max
+         - contains : noting the root is empty, or the value not in tree
+         - insert: use contain to determine if the value is in tree
+         - remove: note when node has a count more than 1, root is empty, 
+                    node with different numbers of children, removing value 
+                    not in the list
+         - height: initial height should be -1, only root would be 0
+         - node count: node count should NOT include duplicates
+         - count total: count tree with some nodes having count more than 1
+         - copy_constructor: value should exist in both lists after copying
+         - operator/post_order_delete : old value should be replaced by new 
+                                        value
+
+I discovered my bug in remove function again. I forgot to update the value of 
+parent when deleting the node without children. I modified and then they are 
+went well. 
+
+
+FINAL_TESTING
+I used valgrind to check memory leak and there's none. I used wc command to 
+check the length to make sure they are all under 80. 
+
+Note: This homework comes partially implemented, but I add class functionality.

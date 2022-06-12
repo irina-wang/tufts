@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>STOCK QUERY</title>
+  <h2>STOCK QUERY</h2>
+  <link rel="stylesheet" href="index.css">
+  <script type="text/javascript">
+    function DisplayOption() {
+      if(document.getElementById('query_by_name').checked){
+        document.getElementById('name').style.display = 'block';
+        document.getElementById('ticker').style.display = 'none';
+        document.getElementById("form").action = "http://localhost:3000/company";
+      } else{ // query_by_ticker
+        document.getElementById('ticker').style.display = 'block';
+        document.getElementById('name').style.display = 'none';
+        document.getElementById("form").action = "http://localhost:3000/ticker";
+       }
+    }
+    </script>
+</head>
+
+<body>
+  <form id="form" method="GET">
+    <div style="display:block; text-align: center;">
+      <span >SEARCH BY: </span> <hr>
+      Company Name <input type="radio" onclick="DisplayOption()" name="yesno" id="query_by_name"> 
+      Ticker <input type="radio" onclick="DisplayOption()" name="yesno" id="query_by_ticker"><br></div>
+    
+    
+      <div id="name" name="name" style="display:none">
+        <input type="text" id="company_name" name="company_name" placeholder="Please enter the company name"> <br>
+      </div>
+   
+      <div id="ticker" name="ticker" style="display:none">
+        <input type="text" id="ticker_name" name="ticker_name" placeholder="Please enter the ticker name"> <br>
+      </div>
+
+      <div id="display_data"></div>
+      <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+

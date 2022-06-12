@@ -1,0 +1,30 @@
+/*********************************************************
+ * AVL Tree Lab
+ * Comp 15 Fall 2018 
+ * 
+ * Author: Sana Farrukh
+ * Revised by Irina Mengqi Wang
+ *
+ *********************************************************/
+
+This lab contains partial implementation of AVL Trees.
+
+main.cpp         : Driver. Creates an AVL class object, and calls the 
+                    insertion operation over a set of values.
+AVLTree.cpp      : contains the methods to manipulate an avl tree.
+AVLTree.h        : contains the interface of AVLTree class.
+pretty_print.cpp : auxiliary file that contains the instructions needed to 
+                    display a tree
+                   tree is reported on out in a similar way as we conceptually 
+                    see them. 
+Makefile         : standard Makefile needed to compile the program.
+README           : this file
+
+In order to compile the program simply type 'make' in the console
+You can execute it with './lab'
+
+I wrote the function balance,rightRotate and leftRotate, but not the remove. 
+
+Note: the code is not complete on purpose. Students must implement some 
+        functions in AVLTree.cpp. However, the code will properly compile and 
+        run without the missing procedures(it will work as a BST instead)

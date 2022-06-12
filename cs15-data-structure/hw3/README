@@ -1,0 +1,113 @@
+/**********************************************************
+* HW3: Metro Simulator
+* Comp 15 Spring 2019 
+* README
+* Author: Hayden Wolff
+* Modified by: Irina Mengqi Wang
+*
+*********************************************************/
+
+Compile/run: Compile using "make MetroSim", run executable with
+"./MetroSim stationsFile passFile [commands]"
+
+Program Purpose: This homework assignment handles a running train
+to accomodate passengers arriving/departing a metro. Learn how to
+design and modularize code and work with documented libraries.
+
+Acknowledgements: 
+- I searched online for what it means to take in argument in main
+- I searched online about how to use vector, especially erase function
+- I studied the unit test tutorial
+
+Files: 
+main.cpp: STUDENT TO-DO: Main file should be short and handle 
+simple driver functions such as reading in files. 
+
+MetroSim.cpp: STUDENT TO-DO: Implementation of MetroSim class.
+Main functionality of running the Metro Simulation, should be
+able to move trains and deal with passengers going on/off the 
+train. 
+
+MetroSim.h: STUDENT TO-DO: Interface of MetroSim class.
+
+Station.cpp: Implementation of Station class. Allows for various
+functions related to accessing the information of the Station
+class and modifying passengers. 
+
+Station.h: Interface of Station class.
+
+stations.txt: an example file containing a list of stations.
+
+test_commands.txt: sample list of commands that you could give to
+the simulator
+
+Data Structures:
+
+I used a Passenger struct, which stores the passenger's ID using
+integers(ID), unsigned int of start and end station(start and end).
+
+I used a Station struct, which stores the string of station name(name), 
+unsigned integer of station number(Station_NO) and a dynamic array(vector) 
+of passengers in the current station.
+
+I also used two nother dynamic array implemented by Station vector, which
+are listOnTrain (that stores the passengers that already gets on the train)
+and stations(that stores the passengers in the current station).
+
+Other than these main constructions, I have a boolean go_on to determine 
+whether the user want to keep playing. I also have a boolean mvforward to
+keep track of the direction that the train is moving. There's also a ID 
+count that keeps track of the IDs assigned to passengers,and also an 
+unsigned int curr that keep track of the train's current position index.
+
+
+
+Testing: 
+
+NORMAL_TESTING
+Before doing the unit test, I ran several cases on my terminal to test some
+ cases:
+        - see if passenger gets on and off from the right station
+        - add passenger that travels from current station to next
+        - add passenger to station that the metro has already passed 
+        - add passenger that goes opposite from the direction the train 
+          travels
+        - what will happen when the command inputed is not as required
+        - add more than one passengers at the same station and then move
+        - add passengers that go to stations that's beyond boundary
+        - add passengers that gets off from same station they gets on
+        - changes file
+        - input command using captalized letters
+        - run the program without input file name or output file name
+        - end game
+        ......
+
+Those are problems I encountered when I ran the test, but the most serious 
+problem I encountered is the difference in printing sequence, which makes 
+me realize that we implement in different ways. I tried different data and 
+compared the differences and then adjust my file to meet the requirements. 
+
+UNIT_TESTING
+Since print functions can be examined by using "diff" to compare the output
+files of reference and my own program, I didn't use unit test to check 
+them. So are changing files. Thus I checked other cases:
+         - initializing constructor using objects 
+         - Initializing the passengers, paying attention to the starting ID
+           and counting IDs
+         - MetroCommands, noticing different cases of m and f as well as
+           when they are capitalized
+         - Initializing the station, check if stations are correctly read 
+           in and read into the right place. Also check their ID.
+         - nxtStation, make sure it adds/subtracts corresbondingly to the 
+           moving direction
+         - forward, see how curr affects the direction that's moving toward
+         - checkOnTrain, passenger removed from the passengerList, added to
+           listOnTrain. Also, checking if the passengers are erased when
+           they get off from the metro.\
+
+ *I commented off "private:" when I was running my unit tests. They are
+    passed. I commented private off after this so that it can still run 
+    successfully.
+
+Note: This homework comes partially implemented, but student must
+also create the driver and add class functionality.

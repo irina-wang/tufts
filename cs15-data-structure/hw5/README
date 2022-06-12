@@ -1,0 +1,136 @@
+/*********************************************************
+ * Homework 5: graph traversal
+ * Comp 15 Spring 2019 
+ * 
+ * Author: Matias Korman
+ * Modified: Irina Mengqi Wang
+ *
+ *********************************************************/
+
+This homework assignment contains a partial implementation of Graph BFS 
+traversal.
+
+
+main.cpp                : main driver of the project. Creates and 'run's an 
+                          instance of SixDegrees 
+Graph.cpp               : graph class with extra helping tools to run DFS
+Graph.h                 : interface of graph class above
+Actor.cpp               : actor class with extra helping tools to run DFS
+Actor.h                 : interface of actor class above
+SixDegrees.cpp          : SixDegrees class containing main functionality to run
+                          the program
+SixDegrees.h            : interface of SixDegrees class above
+LinkedList.cpp          : simple template linked list class used for DFS
+LinkedList.h            : interface of Linked list class above
+NodeType.h              : interface of Nodetype class (a simple struct used in 
+                          the linked list class)
+Stack.cpp               : simple template stack class used for DFS
+Stack.h                 : interface of Stack class above
+Queue.cpp               : simple template queue class used for DFS
+Queue.h                 : interface of Queue class above
+actors.txt              : sample list of actors and the movies they have been in
+test_input.txt          : sample test input for the algorithm
+the_sixdegrees          : reference implementation for students to use as 
+                          reference
+README                  : this file
+
+
+INTERACTION BETWEEN CLASSES:
+My function include basic Data Structures as Stack, Queue and LinkedList to help
+construct the class's functionality. The Graph class use Actor as elements in 
+the graph template. SixDegrees class use Graph<Actor> as object to implement 
+ONLY the functions that the clients are allowed to access, and it is included in
+the driver main so that the clients can only ask to run the program, do BFS and
+populate the graph without being able to change anything in the graph. 
+
+
+KEY ALGORITHMS:
+In graph function, I have add_vertex and add_edge to help insert vertex as well
+as edges. initialize_graph is here to initialize graph with given amount of 
+vertices, as well as initializing path by calling initialize_path to build path
+between any two of vertices. There are also functions that helps implementing 
+BFS and DFS such as marking vertices and updating predecessors. Get edges and
+get vertex help access the graph, and report path and print_matrix help 
+report or visualize the pathes. Big three to take care of memory usage. 
+
+For Breath-first search, i implemented two queues to aid the check. I first 
+clear all the previous marks and initialize the path to start searching. The
+elements in the first queue are actors that are going to be searched the 
+neighbours of. I marked each actor after dequeuing from queue1 and searched its
+neighbours to insert into queue two. I then start dequeuing actors from queue 2
+after dequeuing one actor from queue one and update its predecessor to the 
+actor i just dequeued from queue 1 and insert it back into queue 1 only 
+when it's not marked.(if not marked, do the previous two steps.) I repeat the 
+process until queue 2 is empty and start over again from dequeuing actor from 
+queue 1. This way, i can find the shortest path without repeatedly checking the 
+same actor. After this, I report the path. 
+
+
+QUESTIONS:
+- what did you find challenging in this assignment? 
+    I think the most challenging part is to figure out how to wrap around with 
+SixDegrees class. I spent a lot of time testing the previous classes and make 
+sure everything went already but still have no idea where I did wrong in 
+SixDegrees. 
+
+- Which parts of your work are you most proud of?
+I'm most proud of my Big Threes and the process that I wrap around and figure 
+out where to add const.
+ 
+- and which would you improve if you had more time? 
+I guess I would reallocate some of the functions in SixDegrees class and Graph 
+class to avoid repetition. 
+
+- Did you complete all parts of the assignment successfully?
+As far as what I tested, it all went well. I definitely hope that it means
+I complete all parts of the assignment successfully.
+
+
+UNIT_TESTING
+I used google test to check all the public functions' normal functionality as
+well as the special cases 
+    - For Actor Class
+         - Insert_movie and Actor_is_in : I tested these two functions 
+                together to see if both work.
+         - Connect : I tested the cases where the actors have 1/ No same movie
+                2/ ONLY one same movie 3/ More than one same movie, and more
+                importantly 4/ connecting to itself.
+         - operator==: I tested the case where 1/ Actors with different names
+                2/ Actors with same names and 3/ Actors with same names but 
+                different movies
+         - operator!=: I tested the case where 1/ Actors with different names
+                2/ Actors with same names and 3/ Actors with same names but 
+                different movies
+         - Operator<<: I didn't test since I can check it in output file instead
+    - For Graph Class
+         - insert : I tested both cases when the items I'm searching for are 
+                    in the graph or aren't in the graph
+         - copy_constructor: check if the copy succeed, and change the original 
+                graph and new graph and see if the other one change as well
+         - operator==: check if the copy succeed, and change the original 
+                graph and new graph and see if the other one change as well
+         - get_edge: check the cases where 1/there's no edge at all 2/ some
+                sub-edge in between the two vertices but no edge between them
+                3/ one edge between them 4/ more than one edge between them
+         - report_path
+                - report_path_no_path: no path between two vertices
+                - report_path_one_path: one path between two vertices
+                - more than one path : test in SixDegrees class
+         - Destructor:  I use valgrind to test the destructor
+    - For SixDegrees Class
+         - populate_graph: check if the vertices and edges are successfully
+                           inserted
+         - BFS: test the cases 1/ no path between two vertices 2/ one path 
+                between two vertices 3/ More than one path bewteen two 
+                vertices(the case that's not tested in report_path)
+         - run: compile and run
+        
+
+FINAL_TESTING
+After doing the unit test, I compiled and ran the program. I use diff to check 
+my output with the reference output to make sure there's no difference. I used 
+valgrind to check memory leak and there's none. I used wc command to 
+check the length to make sure they are all under 80. 
+
+Note: I revised the the funtcions in Graph class and main driver, and created
+      Actor and SixDegrees classes. 

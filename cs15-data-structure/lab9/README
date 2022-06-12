@@ -1,0 +1,31 @@
+/*********************************************************
+ * Comp 15 graph traversal lab
+ * 
+ * Author: Matias Korman
+ * Modified by Irina Mengqi Wang
+ *
+ *********************************************************/
+
+This lab contains partial implementation of Graph BFS traversal. 
+
+search-campus.cpp: main driver of the project. Reads file, and ask for source 
+                    destionation to run dfs
+Graph.cpp 		 : graph class with extra helping tools to run DFS
+Graph.h 		 : interface of graph class above
+Stack.cpp 		 : simple template stack class used for DFS
+Stack.h 		 : interface of Stack class above
+NodeType.h 		 : interface of Nodetype class (a simple struct used in the 
+                    linked list class)
+Queue.cpp 		 : simple template queue class used for DFS
+Queue.h 		 : interface of Queue class above
+Makefile		 : information on how to compile the whole project
+campus-map.txt	 : description of the Tuft campus map and all adjacencies. 
+README	       : this file
+
+In order to compile the program simply type 'make search' in the console
+You can execute it with './search campus-map.txt'
+
+Note: the code is not complete on purpose. Students must implement some 
+        functions in Graph.cpp. However, the code will properly compile and 
+        run without the missing procedures (it will not make a segmentation 
+        fault)

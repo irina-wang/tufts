@@ -1,0 +1,34 @@
+/**********************************************************
+* HW4: BinarySearchTree
+* Comp 15 Spring 2019 
+* README
+* 
+* Author: Irina Mengqi Wang
+* Date:   2019/3/1
+*
+* 
+*********************************************************/
+
+
+Program Purpose: For this task, we have to complete the implementation of 
+the function solve(). Specifically, you’ll implement either bool solve(in 
+ row, int col) or bool solve(Position p) in the file maze.cpp.
+
+Acknowledgements: 
+TA helped to explain during lab. Prelab file offered some helper functions. 
+
+Files: 
+maze.cpp: TO_BE_MODIFIED : implement solve function and count the steps
+(unfinished, but will work on it) 
+
+
+Data Structures:
+
+provided with the file.
+
+
+Testing: 
+
+none
+
+Note: This lab comes partially implemented.

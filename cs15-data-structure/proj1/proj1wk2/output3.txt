@@ -1,0 +1,6 @@
+TACAGGT inserted
+Match found: TACAGGT 29%
+TAGTAGT inserted
+ACCATAC: No match found
+TAC inserted
+ACGT: No match found

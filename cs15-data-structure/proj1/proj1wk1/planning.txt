@@ -1,0 +1,72 @@
+/**********************************************************
+* Proj1: The Biologist’s Grep
+* Comp 15 Spring 2019 
+* Planning text
+* 
+* Author: Irina Mengqi Wang
+* Helping TA: Omorri01
+* Date:   2019/3/6
+*
+* Note: Partial descriptions copied from proj1 pdf file
+*********************************************************/
+
+1. I will be using trieNodes struct, with an implementation of array
+of 5 pointers, for this project. I chose this structure because it's most
+efficient timewise and spacewise(kind of). It's also really convenient to keep
+track of. Although there will be a lot of NULL pointers in the bottom, For now, 
+this is the only structure I will use. I will implement it in a class with 
+clients having access to public functions to pass in values but having no 
+access to the recursive helper functions in the private. And I may add more 
+structure when actually writing the program. I'm modifying the index to 5 
+since we need to implement tree with "A" "T" "G" "C" and "$"(end sign).
+
+2. For all three of them, I'm going to write one in function in public, and
+a corresbonding function that works recursively in private. I'm also going 
+to implement helper function that converts int to char and char to int to
+help in the process. For insert, we don't need to traverse from the whole 
+tree, but only examining the letters in the sequence one by one and make 
+sure they are all in the list. If there's letters that doesn't exist, we 
+start adding them. If all letters exist in the list but no "$" at the end, 
+we put a "$" at the end. This function returns nothing, but print sentences
+to cout. For query request, we should return a string of letters by returning 
+single letter one by one. It's similar to insert that we examine the letter 
+in the sequence one by one until there's no matching in the tree; then search 
+by the sequence of "$-A-C-G-T" and return the first existing one. For query 
+function, we also need a helper function in the private to calculate the 
+matchness. This function takes in both the query sequence, and the result 
+query function returns, and compare one by one, and then calculate the 
+matchness. For the other query function, which is prefix query, we search as 
+the previous two function do until we find the prefix. If the prefix doesn't 
+exist, we simply print "No match found"; however, if we found the sequence, 
+we do a slightly different search that traverse from the last node of the 
+prefix since we are supposed to return them all. For remove function, it can 
+be tricky, since we may be deleting different numbers of nodes. We frist search 
+for the sequence, and if they are not in the tree, we print "No match found". 
+And if they exist in the sequence, the condition for deleting the node in the 
+tree is that we check if the current node has any children(including "$"); 
+if not, we delete it and if yes, we keep it. We do that recursively.  
+
+3. This is definitely a spacewise efficient concern, since we put sequences 
+with same prefix together. It's also somewhat timewise efficient, since this 
+program requires a lot of traversing through the tree, which would be easy and 
+fast. It's mostly depending on the length of the sequence, with the worst 
+case being O(m). The NULL pointers at the end of the list would for sure take 
+up a lot of memory space though.
+
+4. For now, I will stick to one class, with public functions of insert, query,
+index_query, remove,number of nodes(for checking purpose) each with a 
+corresbonding recursive function. There will also be private helper functions 
+of int to char and char to int as noted in previous questions. Also 
+examine_matchness as well. There may be another function that helps traverse 
+through the list. However, for all print functions(either to cout or to 
+passfile), I may build another class that does it separately. But it will also 
+work fine in the same class's public. 
+
+5. I haven't written any actual code by now, but I'm writing all the pseudocode
+right now.
+
+6. Traverse through the list is similar to what we did for last hw. 
+- If the pointer is NULL, return 
+- If the pointer isn't NULL, recursively call itself by using a for loop to 
+    to go through the array in the sequence of "$-A-C-G-T". Then, do the moves 
+    accordingly (like deleting the node and so on).

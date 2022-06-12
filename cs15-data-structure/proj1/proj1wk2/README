@@ -1,0 +1,99 @@
+/**********************************************************
+* HW4: SequenceMatch
+* Comp 15 Spring 2019 
+* README
+* 
+* Author: Irina Mengqi Wang
+* Date:   2019/3/12
+*
+*********************************************************/
+
+Compile/run: Compile using "make", run executable with
+"./SeqMatch [input filename] [output filename]"
+
+Program Purpose: This project is a Sequence Match implementation. Using this
+program, we can create a tree starting from one root, and achieve functions 
+such as query and prefix query. The goal of Project 1 is to expand the use 
+of trees and test our ability to make design decisions that are cognizant 
+of space and time efficiency.
+ 
+
+Acknowledgements: 
+- I referred to the lecture note 
+- I asked my friend who came to visit me from RPI and Duke. 
+- I also searched online on website, geeksforgeeks and stackoverflow(which are 
+the first three websites that popped out)
+- I checked the answers on Piazza(Thanks for the TAs!)
+- I used vsCode to debug my code
+
+Files: 
+main.cpp: simple driver that checked few remove cases and print with print 
+          function
+
+SequenceMatch.cpp: Implementation of SequenceMatch class.
+Main functionality of implementing with inserting and removing nodes, should be
+able to access properties of the tree as well. 
+
+SequenceMatch.h: Interface of SequenceMatch class.
+
+
+Data Structures:
+
+I used trieNodes struct, with an implementation of array of 5 pointers, 
+for this project. I chose this structure because it's most efficient timewise 
+and spacewise(kind of). Although there will be a lot of NULL pointers in the 
+bottom It's also really convenient to keep track of. I will implement it in a 
+class with clients having access to public functions to pass in values but 
+having no access to the recursive helper functions in the private. And I may 
+add more structure when actually writing the program. I'm modifying the index 
+to 5 since we need to implement tree with "A" "T" "G" "C" and "$"(end sign).
+
+
+Testing: 
+
+NORMAL_TESTING
+Before doing the unit test, I compiled and ran the program. I wrote several 
+random cases and use diff to check my output with the reference output to 
+make sure there's no difference. 
+
+I had a segment fault at first and I soon discovered my problem in query -- 
+I didn't compare the result. I modified my functions to make it work.  
+
+UNIT_TESTING
+I used google test to check all the public functions's normal functionality as
+well as the special cases 
+         - insert : note special case when inserting something not of the four 
+                    letters
+         - clear : check the number of nodes after removing
+         - remove: check the number of nodes after removing to make sure it 
+                    removed successfully
+         - print: check if it prints in order
+         - prefix_query: check if it gets the right result and print in order
+         - query: check both cases that it can compare and choose the shorter 
+                  one when both have the same prefix and choose alphabetically
+                  when sequences have the same length 
+
+I found my mistakes in remove where I just change the pointer NULL but instead 
+of deleting it. I adjusted it and everything worked fine.
+
+
+FINAL_TESTING
+I used valgrind to check memory leak and there's none. I used wc command to 
+check the length to make sure they are all under 80. 
+
+Additional Explanation:
+
+1/ I only have one class -- SequenceMatch that does all the core functions the 
+    file asked for including insert, clear, delete, remove and so on. It takes 
+    O(m) where m is the length to conduct query, and O(num of nodes) space in 
+    total, which is smaller than the letters in all sequence. 
+
+2/ unit-test files : 
+    - driver: runalltests.cpp 
+    - test cases: SequenceMatch-unittest.cpp
+    - input file(didn't actually use the data inside) : command.txt
+                                                        commands.txt
+    - output file: ut-output.txt, ut-output2.txt, print.txt, pfx.txt
+
+3/ All files: 
+    SequenceMatch.h SequenceMatch.cpp main.cpp 

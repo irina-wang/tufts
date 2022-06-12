@@ -1,0 +1,71 @@
+/****************************************************************
+ *
+ *                         README
+ *
+ *       Author : Tianyi Ma （啊啊啊）
+ *                Mengqi Irina Wang (mwang17)
+ *       Date   : 10 / 23 / 2019
+ * 
+ *       Usage:
+ * 
+ *       Appended file explaining the information about HW4 arith
+ *       Include Acknowledgements, records of completion, testings,
+ *       architecture, performance measurement and assessment, as
+ *       well as total time spent on the homework. 
+ *
+ *****************************************************************/
+
+
+     ---------------------  ACKNOWLEDGEMENTS  -----------------------
+            
+            We went to Wednesday Megan's OH and asked about naming
+            functions, the balance between modularity and clarity, 
+            as well as shifting and big and small Endian. We also 
+            searched in google about 啊啊啊 
+
+
+
+
+     -------------------------  COMPLETION  --------------------------
+
+            We complete all functionalities asked in spec and go 
+            through different testings. 
+
+
+     -------------------------  ARCHITECTURE  -------------------------
+           For this assignment, we created 啊啊啊 different modules, namely
+
+            1) dct : does discrete cosine transform
+                - obtain cosine coefficients (a, b,  c, d)
+                - compute Y​1​, Y​2,​ Y​3​ and Y​4​ from a, b, c, d.
+
+            2) blockpack : does packing and unpacking functionality
+                - packing 2*2 block which converts the component video 
+                   into binary image 
+                - unpacking 2*2 block which converts the binary image 
+                   into the component video
+
+            3) imagerdr : reads and writes the binary image
+                - read the image
+                - write the image
+
+            4) 
+
+
+            compress40 is a module that group all the compressor or 
+            decompressor functionalities together. So that the main 
+            function in 40image can directly call either compress40 
+            to perform all operations in the compressor, or call
+            decompressor40 to perform all operations in the 
+            decompressor.
+
+            啊啊啊要不要说一下我们照着Hanson的做？
+            
+
+     ------------------------  Time of completion  ------------------------
+
+                We used approximately 啊啊啊 hours to complete the 
+            program, including 啊啊啊 hours of design time, 啊啊啊 
+            hours of coding time, 啊啊啊 hours of testing time and
+            啊啊啊 hours of documentation time. 
+

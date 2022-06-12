@@ -1,0 +1,2 @@
+Output file has been changed to newfile.txt
+There are 15 nodes in the database
