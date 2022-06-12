@@ -1,0 +1,75 @@
+;; Literals (simple)
+    (check-principal-type 3 int)
+    (check-principal-type #t bool)
+    (check-principal-type 'hello sym)
+
+;; Literals (NIL)
+    (check-principal-type '() (forall ['a] (list 'a )))
+
+;; Literals (PAIRS)
+    (check-principal-type '(1) (list int))                        ; one-elem pair
+    (check-principal-type '(1 2) (list int))                      ; two-elem pair
+    (check-principal-type '(#t #f #t) (list bool))
+
+    (check-type-error '(#t 1))                     ; pair of diff types
+    (check-type-error '(#t 1 #t a))
+
+;; IFX
+    (check-principal-type (if #t 1 2) int)
+    (check-principal-type (if #t 'a 'b) sym)
+
+    ; error
+    (check-type-error (if 1 'j 1))                       ; e1 not bool
+    (check-type-error (if #t 'j 1))                      ; e2 e3 not equal type
+
+;; BEGIN
+    (val x 3)
+
+    (check-principal-type(begin ) unit)
+    (check-principal-type(begin (+ x 1) (+ x 2) (+ x 3)) int)
+    (check-principal-type(begin 1 0 #f) bool)
+
+    ; error
+    (check-type-error (begin (+ 1 x) (0) ))
+    (check-type-error (begin (+ 1 x) (+ x 2) (- x #t)))
+    (check-type-error (begin (+ 1 x) (- x 'a)))
+
+;;  LAMDBA
+    (check-principal-type(lambda (x1 x2) (+ x1 x2)) (int int -> int))
+    (check-principal-type(lambda (x1 x2) (and x1 x2)) (bool bool -> bool))
+
+    ; error
+    (check-type-error (lambda (x1 x2) (and (+ x1 x2) x2)))
+
+
+;; LETSTAR
+
+    (check-principal-type (let* ([x 1] [y 2]) (+ x y)) int)
+    (check-principal-type (let* () (+ x 1)) int)
+    (check-principal-type (let* ([x (< 1 5)] [y (< 5 2)]) (and x y)) bool)
+    (check-principal-type   (let* ([x #f] [y x]) (and x y)) bool)
+
+    ; error
+    (check-type-error (let* ([x #f] [y 2]) (+ x y)))
+    (check-type-error (let* ([x #f] [y 2]) (and x y)))
+    (check-type-error (let* ([y k]) y)) 
+
+;; LETREC
+
+    (check-principal-type (letrec () 1) int)
+    (check-principal-type (letrec ([f (lambda () 1)]) (f)) int)
+
+    ; error
+    (check-type-error (letrec ([a 1] [b 2]) (+ a b)))
+    (check-type-error (letrec ([a 1] [b '(1 2)]) (cons a b)))
+
+
+;;  predefined functions 
+    (check-principal-type map 
+                    (forall ['a 'b] (('a -> 'b) (list 'a) -> (list 'b))))
+    (check-principal-type filter 
+                    (forall ['a] (('a -> bool) (list 'a) -> (list 'a))))
+    (check-principal-type exists? 
+                    (forall ['a] (('a -> bool) (list 'a) -> bool)))
+    (check-principal-type foldr 
+                    (forall ['a 'b] (('a 'b -> 'b) 'b (list 'a) -> 'b)))

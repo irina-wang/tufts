@@ -1,0 +1,25 @@
+README
+COMP 105 - HW7 typesys (pair)
+
+Name: Linh Tran & Irina Mengqi Wang
+
+Exercise R 
+    (a) What is the kind of the type constructor ref? Add it to the initial Δ for 
+        Typed μScheme.
+        val kinds   = foldl addKind emptyEnv
+                ((* primitive type constructors for \tuscheme\ [[::]] 365 *)
+                    ("int",  TYPE) ::
+                    ("bool", TYPE) ::
+                    ("sym",  TYPE) ::
+                    ("unit", TYPE) ::
+                    ("list", ARROW ([TYPE], TYPE)) :: 
+                    ("ref" , ARROW ([TYPE], TYPE)) :: [])
+
+    (b) What are the types of ref, !, and :=?(Thesetypesarepolymorphic.)
+
+        ref (‘a-> ref)
+        ! (ref -> ‘a)
+        :=  (ref * ‘a -> unit)
+
+
+A high-level description of the design and implemenation of your solutions

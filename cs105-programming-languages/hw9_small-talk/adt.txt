@@ -1,0 +1,41 @@
+Summary of Our Design Work 
+
+Exercise 37
+    1. NatZero
+       - instance variables: none
+       - abstraction function and invariant
+         ; A (self) = 0
+         ; invariant message
+            (method invariant () true) 
+
+    2. NatNonZero
+       - instance variables
+         ; first : first is least significant digit
+         ; rest  : rest is what's left
+       - abstraction function and invariant
+         ; A (self) = first + rest * base
+         ; invariant message
+            (method invariant () ((first < base) and: (rest invariant))) 
+
+Representation
+    We used the subclass-based representation, with special subclasses for 
+    zero and nonzero numbers. We chose it because the case analysis is handled 
+    for us, and using it can demonstrate our knowledge in smalltalk.
+
+    The syntax was not so intuitive at the beginning, but we figured it out and
+    successfully implemented all methods.
+
+Exercise 38
+     1. LargePositiveInteger
+       - instance variables: none 
+       - abstraction function and invariant
+         ; A (self) = magnitude
+         ; invariant message
+            (method invariant () true) ; private
+
+    2. LargeNegativeInteger
+       - instance variables: none
+       - abstraction function and invariant
+         ; A (self) = - magnitude
+         ; invariant message
+            (method invariant () true) ; private

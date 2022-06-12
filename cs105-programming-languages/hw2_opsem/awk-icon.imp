@@ -1,0 +1,20 @@
+
+;; (unbound_var)
+;;     > returns a checked run-time error using standard Impcore interpreter
+;;     > otherwise assign 1 to a variable and return it
+(define unbound_var ()
+    (set n 1))
+
+;; (test_interpreter)
+;;     > return different results depending on different interpreters
+;;          > checked run-time error using standard Impcore interpreter
+;;          > prints 1 using Impcore interpreter with Awk-like extension
+;;          > prints 0 using Impcore interpreter with Icon-like extension
+(define test_interpreter ()
+    (begin
+        (unbound_var)
+        n))
+
+
+(test_interpreter)
+

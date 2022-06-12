@@ -1,0 +1,52 @@
+;;  Written by Mengqi Irina Wang(mwang17)
+;;  Sep 15th, 2020
+
+1. 99
+
+2.  (b) A definition can be made with any expression as one of its parts
+
+3.  (1) No
+    (2) Yes
+
+4.  (a) C : 9 - (12 / 3)
+    (b) Impcore : (- 9 (/ 12 3))
+
+5.  I show you a recursive function `f` that takes one argument, 
+    a natural number `n`.  The structure of `n`, and therefore the
+    internal structure of `f`, are based on the Peano proof system from
+    the handout.
+
+    (a) What are the different ways `n` can be formed?
+        n = 0      when n = 0
+        n = m + 1, when n != 0, where m = n - 1 is a natural number 
+
+    (b) When `f` is given `n`, what code do you expect `f` to use to
+        determine how `n` was formed?
+        (if (= n 0)
+            case 1
+            case 2)
+
+    (c) For which values of `n` do you expect `f` to make a recursive call?
+        n != 0
+
+    (d) When a recursive call is made, what value is passed as argument?
+        n - 1
+
+6.  In *Seven Lessons in Program Design*, just before the end of
+    Lesson 1, you will find a section on "Complete process examples."
+    This section suggests that the `factorial` function---but not the
+    `power` function---could be submitted without a contract.
+    
+    (a) Why would it be OK to submit the `factorial` function without
+        a contract?  For an idea, look at the "Exemplary" column in
+        the "Documentation" section of the general coding rubric.
+
+        It's evident from the function's name what the function returns, and 
+    there's no limits on what the parameter that the function takes. 
+    So we don't need a contract for the function. 
+
+    (b) Why doesn't the same argument apply to the `power` function?
+        For an idea, check the design lesson.
+
+    Because the power function has two parameters, so contract is needed for
+    specify where each parameter would appear in the result. 

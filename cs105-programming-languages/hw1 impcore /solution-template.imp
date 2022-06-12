@@ -1,0 +1,175 @@
+;;;;;;;;;;;;;;;;;;; COMP 105 IMPCORE ASSIGNMENT ;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;  Exercise DD
+
+;; (double-digit n) 
+;;     > Takes in a positive integer less than 20,000
+;;     > Returns a positive integer whose decimal representation is the same as 
+;;       the decimal representation of the input, except each digit appears 
+;;       twice. 
+
+;; Algebraic laws (Decimal(Numeral))
+;;   (double-digit n) == (* 11 n), where n < 10
+;;   (double-digit (+ (* 10 m) d)) == (+ (* 100 (double-digit m)) (* 11 d))
+
+(define double-digit (n)
+    (if (< n 10)
+        (* 11 n)
+        (+ (* 100 (double-digit (/ n 10))) (* 11 (mod n 10)))))
+
+        ;; Unit Tests
+        (check-expect (double-digit 8) 88)
+        (check-expect (double-digit 25) 2255)
+        
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;  Exercise C
+
+
+;; (population-count n) 
+;;     > Takes in a nonnegative integer
+;;     > Returns the number of 1 bits in the binary representation of that 
+;;       integer
+
+;; Algebraic laws (Binary)
+;;   (population-count 0) == 0
+;;   (population-count (+ (* 2 m) b)) == (+ 1 (population-count m)) when b = 1
+;;                                    == (population-count m) when b = 0
+
+(define population-count (n)
+    (if (= n 0)
+        0
+        (if (mod n 2) ;; b = 1 while true 
+            (+ 1 (population-count (/ n 2)))
+            (population-count (/ n 2)))))
+
+        ;; Unit Tests
+        (check-expect (population-count 0) 0)
+        (check-expect (population-count 16) 1)
+        (check-expect (population-count 7) 3)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;  Exercise 2
+
+
+;; (sigma m n)
+;;     > Takes in two integers m,n, where m is less or equal than n
+;;     > Returns the sum of all integers from m to n, inclusive
+
+;; Algebraic laws (Peano)
+;;   (sigma m m) == m
+;;   (sigma m n) == (+ n (sigma m n-1)), where n > m 
+
+
+(define sigma (m n)
+    (if (= m n)
+        m
+        (+ n (sigma m (- n 1)))))
+
+        ;; Unit Tests
+        (check-expect (sigma 3 3) 3)
+        (check-expect (sigma 4 7) 22)
+        (check-expect (sigma -3 2) -3)
+        (check-expect (sigma -7 -4) -22)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;  Exercise 5
+
+还没写完
+;; (prime? n) 
+;;     > Returns nonzero("true") if n is prime and 0("false") otherwise
+;; (divisorIn? k t n) 
+??? ;;     > Returns nonzero("true") if k, other than 1 or n, divides n and 0("false") otherwise
+
+
+;; Algebratic laws:
+;;   (prime? n) == FALSE, where n < 2
+;;   (prime? n) == TRUE,  where n = 2
+;;   (prime?  (+ (* 2 m) b)) == FALSE,  where n > 2, b = 0
+?????????????????????;;                           == (not(divisorIn? 2 √(+ (* 2 m) b)) (+ (* 2 m) b))), where n > 2, b = 0
+;; 
+
+;; Algebratic laws(Parity)
+;;    (checkdivisor? 2 n) == TRUE, if k >= √n
+;;    (divides? k 0) == TRUE, 
+;;    (divides? m+2 n) == (divides? m n)
+;; stop condition: 2 < k < √n
+
+(define divides? (m n)
+    (if (mod n m) ;; Divides
+        1
+        0))
+
+(define checkDivisor? (m n)
+    (if (< m √n) ;; No longer needs to check if m > √n
+        (if(divides? m n)
+            1
+            (divides? m+2 n)))
+    0 ;; FALSE
+)
+
+(define prime? (n)
+    (if (< n 2)
+        0) ;; FALSE
+    (if (= n 2)
+        1) ;; TRUE
+    (if (> n 2)
+        (not (checkDivisor? 2 n))))
+    
+
+        ;; Unit Tests
+        (check-assert (not(prime? -1)))
+        (check-assert     (prime?  2))
+        (check-assert     (prime?  3))
+        (check-assert (not(prime?  8)))
+        (check-assert     (prime? 17))
+    
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;  Challenge
+
+;; (nthprime n) 
+;;     > Takes in a postive integers n
+;;     > Returns the nth prime number
+
+;; (findprime k n)
+
+;; laws:
+;;   (nthprime 1) == 2
+;;   (nthprime n) == 2
+;;   ...
+;; [optional notes about where laws come from, or difficulty, if any]
+
+
+(define kthPrimeAfterm (k m) 
+    (if (= k 0)
+        m
+        (if (prime? (+ m 2))
+            (kthPrimeAfterm (- k 1) (+ m 2))
+            (kthPrimeAfterm k (+ m 2)))))
+
+(define nthprime (n)
+    (if (= n 1)
+        2
+    	(if (= n 2)
+        	3
+        	(kthPrimeAfterm (- n 2) 3))))
+
+
+		(check-expect      (nthprime 1) 2)
+        (check-expect      (nthprime 2) 3)
+        (check-expect      (nthprime 3) 5)
+        (check-expect     (nthprime 5) 11)
+
+        (check-assert      (prime? (nthprime 6))) 
+        (check-assert (not (prime? (+ 1 (nthprime 7)))))

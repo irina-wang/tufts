@@ -1,0 +1,196 @@
+;;;;;;;;;;;;;;;;;;; COMP 105 IMPCORE ASSIGNMENT ;;;;;;;;;;;;;;;
+
+;;                       Written by Mengqi Irina Wang(mwang17)
+;;                                              Sep 15th, 2020
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;  Exercise DD
+
+;; (double-digit n) 
+;;     > n is a positive integer less than 20,000
+;;     > Returns a positive integer whose decimal representation is the same as 
+;;       the decimal representation of the input, except each digit appears 
+;;       twice. 
+
+;; Algebraic laws >>> Decimal (numerals)
+;;    (double-digit n)              == (* 11 n), where n < 10 
+;;    (double-digit (+ (* 10 m) d)) == (+ (* 100 (double-digit m)) (* 11 d))
+                                                         
+
+(define double-digit (n)
+    (if (< n 10)
+        (* 11 n)
+        (+ (* 100 (double-digit (/ n 10))) (* 11 (mod n 10)))))
+
+    ;; Unit Tests
+        (check-expect (double-digit 8) 88)           ;; Case 1: single digit
+        (check-expect (double-digit 25) 2255)        ;; Case 2: double digits
+        
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;  Exercise C
+
+;; (population-count n) 
+;;     > n is a nonnegative integer
+;;     > Returns the number of 1 bits in the binary representation of that 
+;;       integer
+
+;; Algebraic laws >>> Binary
+;;   (population-count 0) == 0
+;;   (population-count (+ (* 2 m) b)) == (+ b (population-count m))
+
+(define population-count (n)
+    (if (= n 0)
+        0
+        (+ (mod n 2) (population-count (/ n 2)))))
+
+    ;; Unit Tests
+        (check-expect (population-count  0) 0)       ;; Case 1: 0
+        (check-expect (population-count  7) 3)       ;; Case 2: b = 1
+        (check-expect (population-count 16) 1)       ;;         b = 0 
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;  Exercise 2
+
+;; (sigma m n)
+;;     > Takes in two integers m,n, m <= n
+;;     > Returns the sum of all integers from m to n, inclusive
+
+;; Algebraic laws 
+;;   (sigma m m) == m
+;;   (sigma m n) == (+ n (sigma m n-1)), where n > m 
+
+
+(define sigma (m n)
+    (if (= m n)
+        m
+        (+ n (sigma m (- n 1)))))
+
+    ;; Unit Tests
+        (check-expect (sigma 3 3) 3)                 ;; Case 1: m >= 0
+        (check-expect (sigma 4 7) 22)                ;; Case 2: n > m 
+
+    ;; Additional Tests
+        (check-expect (sigma -3 -3) -3)              ;; Case 1: m < 0
+        (check-expect (sigma -3 2) -3)               ;; Case 2: n < 0
+        (check-expect (sigma -7 -4) -22)             ;; Case 2: n < 0, m < 0
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;  Exercise 5
+
+;; (foundDivisorFrom? m n)
+;;     > m, n are positive integers, m >= 2
+;;     > Returns 1("true") if there's an divisor greater than m AND LESS THAN 
+;;                            square root n and 0("false") otherwise
+
+;; Algebratic laws:
+;;   (foundDivisorFrom? m n) == 0, where m^2 > n
+;;   (foundDivisorFrom? m n) == (or (not(mod n m)) 
+;;                              (foundDivisorFrom? (+ 1 m) n)), where m^2 <= n
+
+;; Explanation: 
+;;   We only iterate from m to square root n because that's sufficient for 
+;;   evaluating prime. In this way we gain a better time complexity.
+;;   Note that (not(mod n m)) checks if m divides n 
+
+(define foundDivisorFrom? (m n)
+    (if (> (* m m) n) 
+        0                  
+        (or (not(mod n m))                     ;; check if n is divisible by m
+            (foundDivisorFrom? (+ 1 m) n))))
+
+    ;; Unit Tests
+        (check-assert (not (foundDivisorFrom? 5 10)))  ;; Case 1: m^2 > n
+        (check-assert (not (foundDivisorFrom? 3 14)))  ;; Case 1: m^2 > n after 
+                                                       ;;         recursing
+        (check-assert      (foundDivisorFrom? 2 10))   ;; Case 2: 2 | 10
+        (check-assert      (foundDivisorFrom? 2 15))   ;; Case 2: 2+1 | 15
+                                                       ;;        (recurse once)
+        
+
+;; (prime? n) 
+;;     > n is a nonnegative integer
+;;     > Returns 1("true") if n is prime and 0("false") otherwise
+
+;; Algebratic laws:
+;;   (prime? n) == 0, where n < 2
+;;   (prime? 2) == 1
+;;   (prime? n) == (not(foundDivisorFrom? 2 n), when n > 2 
+
+;; Explanation: 
+;;   Case 1: There's no prime less than 2, so evaluates to 0 for false
+;;   Case 2: The smallest prime number is 2, so evaluates to 1 for true
+;;   Case 3: when input n is larger than 2, start checking divisors for n 
+;;           from 2; if found divisors, then n is not a prime; otherwise, n 
+;;           is a prime.
+
+(define prime? (n)
+    (if (< n 2)
+        0 
+        (if (= n 2)
+            1
+            (not (foundDivisorFrom? 2 n)))))
+
+        ;; Unit Tests
+        (check-assert (not (prime? -1)))     ;; Case 1: n < 2
+        (check-assert      (prime?  2))      ;; Case 2: n = 2
+        (check-assert      (prime?  3))      ;; Case 3: prime
+        (check-assert (not (prime?  8)))     ;;         not prime
+
+        ;; Additional Test
+        (check-assert      (prime? 7879))    ;; Case 3: large prime
+      
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;
+;;;;  Challenge
+
+;; (kthPrimeAfterm k m) 
+;;     > k is a positive integer, m is nonnegative integer
+;;     > Returns the kth prime number greater than m 
+
+;; laws:
+;;   (kthPrimeAfterm k m) == (+ m 1), where (prime? (+ m 1)) and k = 1
+;;   (kthPrimeAfterm k m) == (kthPrimeAfterm (- k 1) (+ m 1)), 
+;;                                    where (prime? (+ m 1)) and k != 1
+;;   (kthPrimeAfterm k m) == (kthPrimeAfterm k (+ m 1)),
+;;                                    where (not(prime? (+ m 1))) 
+
+;; Explanation: 
+;;   Checking if next integer is a prime(if not, recurse) and whether k = 1 to 
+;;   determine if we are done searching. 
+
+(define kthPrimeAfterm (k m) 
+   (if (prime? (+ m 1))
+        (if (= k 1)
+            (+ m 1)
+            (kthPrimeAfterm (- k 1) (+ m 1)))
+        (kthPrimeAfterm k (+ m 1))))
+
+    ;; Unit Tests
+        (check-expect (kthPrimeAfterm 1 2) 3)      ;; Case 1    
+        (check-expect (kthPrimeAfterm 3 1) 5)      ;; Case 2
+        (check-expect (kthPrimeAfterm 2 3) 7)      ;; Case 3
+        
+    
+;; (nthprime n) 
+;;     > Takes in a postive integers n
+;;     > Returns the nth prime number
+
+;; laws:
+;;   (nthprime n) == (kthPrimeAfterm n 1)
+
+(define nthprime (n)
+    (kthPrimeAfterm n 1))
+
+    ;; Unit Tests
+        (check-expect      (nthprime 5) 11)
+
+    ;; Additional Tests
+        (check-assert      (prime? (nthprime 6))) 
+        (check-assert (not (prime? (+ 1 (nthprime 7)))))

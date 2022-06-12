@@ -1,0 +1,6 @@
+(check-type-error (letrec ([a 1] [b '(1 2)]) (cons a b)))
+(check-type-error (let* ([y k]) y))
+(check-type-error (lambda (x1 x2) (and (+ x1 x2) x2))) 
+
+(check-type-error (lambda (x) (cons x x)))
+(check-type-error (lambda (x) (cdr (pair x x)))) 

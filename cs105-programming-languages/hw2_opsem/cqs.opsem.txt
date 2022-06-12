@@ -1,0 +1,27 @@
+;;  Written by Mengqi Irina Wang(mwang17)
+;;  Sep 23th, 2020
+ 
+ 1. (f) *only* the values of global variables.
+
+ 2. (c) *both* primitive and user-defined functions.
+    
+ 3. (b) *only* the values of formal parameters.
+
+ 4. (d) an expression
+
+ 5. (e) a value
+
+ 6. (e) a value
+
+ 7. (a) an environment
+
+ 8. 2 
+
+ 9. 5
+
+10. (c) Evaluating $x$ doesn't change the value of any formal parameter.
+      
+11. (a) Evaluating $e$ might change the value of some formal parameter.
+
+12. (b) No part of the evaluation changes the value of a formal parameter.
+    

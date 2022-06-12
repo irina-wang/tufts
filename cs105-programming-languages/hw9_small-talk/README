@@ -1,0 +1,25 @@
+README
+COMP 105 - HW9 Smalltalk
+
+Names: Yichen Wei
+       Irina Mengqi Wang
+
+How we tested the bignum code:
+    We wrote unit test in natural-tests.smt to account for every single method 
+    we wrote. We also run the given-natural-tests.smt provided by the course 
+    staff. After passing both tests, we came up with more complex cases and
+    wrote them in the exercise T.
+
+
+The names of the people with whom we collaborated:
+    We didn't discuss or collaborate with anyone else.
+
+The numbers of the exercises we worked :
+    We completed 37, 38, 39, T and ADT, and didn't attempt extra credits.
+
+Acknowledgements: 
+    We would like to thank course staff for providing the template for Natural 
+    and methods for sdiv in SmallInteger. We also appreciate all the test 
+    cases.
+
+
