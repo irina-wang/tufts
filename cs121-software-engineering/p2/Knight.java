@@ -29,24 +29,20 @@ public class Knight extends Piece {
 
         // add all possible moves in indices value to a list
 
-        // 2 squares up, 1 square right
+        // 2 squares up, 1 square right / left
         indicesMoves.add(new int[]{col + 1, row - 2});
-        // 2 squares up, 1 square left
         indicesMoves.add(new int[]{col - 1, row - 2});
 
-        // 2 squares down, 1 square right
+        // 2 squares down, 1 square right / left
         indicesMoves.add(new int[]{col + 1, row + 2});
-        // 2 squares down, 1 square left
         indicesMoves.add(new int[]{col - 1, row + 2});
 
-        // 2 squares right, 1 square up
+        // 2 squares right, 1 square up / down
         indicesMoves.add(new int[]{col + 2, row - 1});
-        // 2 squares right, 1 square down
         indicesMoves.add(new int[]{col + 2, row + 1});
 
-        // 2 squares left, 1 square up
+        // 2 squares left, 1 square up / down
         indicesMoves.add(new int[]{col - 2, row - 1});
-        // 2 squares left, 1 square down
         indicesMoves.add(new int[]{col - 2, row + 1});
 
         // convert each indices pair to location and 
@@ -62,8 +58,6 @@ public class Knight extends Piece {
                 }
             }
         }
-
         return moves;
     }
-
 }
