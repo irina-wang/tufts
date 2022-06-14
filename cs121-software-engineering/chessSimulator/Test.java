@@ -243,15 +243,15 @@ public class Test {
         b.clear();
     }
 
+    // Tests that a piece can properly detect it cannot move off the board
+    // to the location of another piece.
     public static void testKnightKing() {
-        //tests that a piece can properly detect it cannot move off the board
-        //to the location of another piece.
-    	  Board b = Board.theBoard();
+    	Board b = Board.theBoard();
         Piece.registerPiece(new KingFactory());
-    	  Piece.registerPiece(new KnightFactory());
-    	  Piece king = Piece.createPiece("wk");
+    	Piece.registerPiece(new KnightFactory());
+    	Piece king = Piece.createPiece("wk");
         Piece knight = Piece.createPiece("wn");
-    	  b.addPiece(king, "a1");
+    	b.addPiece(king, "a1");
         b.addPiece(knight, "c3");
         List<String> king_moves = king.moves(b, "a1");
         assert king_moves.size() == 3;
