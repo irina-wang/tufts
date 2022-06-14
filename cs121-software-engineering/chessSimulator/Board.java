@@ -44,7 +44,7 @@ public class Board {
         pieces[col][row] = p;
     }
 
-    /* Move a piece from one location to another, throw an exception is move 
+    /* Move a piece from one location to another, throw an exception if move 
      * is invalid 
      */
     public void movePiece(String from, String to) {
