@@ -1,6 +1,6 @@
 import java.util.*;
 
-/**
+/*
   * Implementation/interface of a chess Piece.
   */
 abstract public class Piece {
@@ -27,7 +27,6 @@ abstract public class Piece {
         } else {
             throw new IncorrectLayoutFormat();
         }
-
         return p;
     }
 
@@ -79,14 +78,13 @@ abstract public class Piece {
         int colIndex = indices[0];
         int rowIndex = indices[1];
 
+	// board index 0-7
         if (colIndex < 0 || colIndex > 7) {
             return false;
-        }
-
+        } 
         if (rowIndex < 0 || rowIndex > 7) {
             return false;
         }
-
         return true;
     }
 }
