@@ -1,8 +1,8 @@
 import java.util.*;
 
-/**
-  * Implementation of Knight piece, including moves.
-  */
+/*
+ * Implementation of Knight piece, including moves.
+ */
 public class Knight extends Piece {
     public Knight(Color c) { 
         this.color = c;
@@ -19,11 +19,11 @@ public class Knight extends Piece {
 
     /* Returns the possible moves of a Knight given a location */
     public List<String> moves(Board b, String loc) {
-	      List<String> moves = new ArrayList<String>();
+	List<String> moves = new ArrayList<String>();
         List<int[]> indicesMoves = new ArrayList<int[]>();
         
         // get current indices of Knight
-	      int[] colrow = indicesFromLocation(loc);
+	int[] colrow = indicesFromLocation(loc);
         int col = colrow[0];
         int row = colrow[1];
 
