@@ -1,0 +1,23 @@
+''' Compute counts of four possible outcomes of a binary classifier for evaluation.
+    
+    Args
+    ----
+    ytrue_N : 1D array of floats
+        Each entry represents the binary value (0 or 1) of 'true' label of one example
+        One entry per example in current dataset
+    yhat_N : 1D array of floats
+        Each entry represents a predicted binary value (either 0 or 1).
+        One entry per example in current dataset.
+        Needs to be same size as ytrue_N.
+
+    Returns
+    -------
+    TP : float
+        Number of true positives
+    TN : float
+        Number of true negatives
+    FP : float
+        Number of false positives
+    FN : float
+        Number of false negatives
+    '''
