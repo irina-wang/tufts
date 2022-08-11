@@ -20,4 +20,4 @@ This is the repo to host my work on feature tuning for sneakers and sandals, aft
 
 ![](./final/Sneaker_or_sandal_code_snippet.png)
 
-Detailed processing and thought process can be found in the [final report](https://github.com/irina-wang/tufts/blob/main/cs135-machine-learning/work/project01/final/project01.pdf)
+Detailed processing and thought process can be found in the [final report](https://github.com/irina-wang/tufts/blob/main/cs135-machine-learning/work/project01/final/Project_1.pdf)
